@@ -10,7 +10,7 @@
   Output: In this lesson, you'll learn how to manipulate data using dplyr. dplyr is a fast and powerful R package written by Hadley Wickham and Romain Francois that provides a consistent and concise grammar for manipulating tabular data.
 
 - Class: text
-  Output: One unique aspect of dplyr is that the same set of tools allow you to work with tabular data from a variety of sources, including data frames, data tables, databases and multidimensional arrays. In this lesson, we'll focus on data frames, but everything you learn will apply equally to other formats.
+  Output: One unique aspect of dplyr is that the same set of tools allow you to work with tabular data from a variety of sources, including data frames, data tables, databases and multidimensional arrays. In this lesson, we'll focus on data frames (or tibbles), but everything you learn will apply equally to other formats.
 
 - Class: text
   Output: 'As you may know, "CRAN is a network of ftp and web servers around the world that store identical, up-to-date, versions of code and documentation for R" (http://cran.rstudio.com/). RStudio maintains one of these so-called ''CRAN mirrors'' and they generously make their download logs publicly available (http://cran-logs.rstudio.com/). We''ll be working with the log from July 8, 2014, which contains information on roughly 225,000 package downloads.'
@@ -49,10 +49,10 @@
   Output: If your dplyr version is not at least 0.4.0, then you should hit the Esc key now, reinstall dplyr, then resume this lesson where you left off.
 
 - Class: cmd_question
-  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'data frame tbl' or 'tbl_df'. Use the following code to create a new tbl_df called cran: \n\ncran <- tbl_df(mydf)."
-  CorrectAnswer: cran <- tbl_df(mydf)
-  AnswerTests: omnitest(correctExpr='cran <- tbl_df(mydf)')
-  Hint: Type cran <- tbl_df(mydf) to create a new tbl_df called cran.
+  Output: "The first step of working with data in dplyr is to load the data into what the package authors call a 'tibble' or 'mydf'. Use the following code to create a new tibble called cran: \n\ncran <- tibble(mydf)."
+  CorrectAnswer: cran <- tibble(mydf)
+  AnswerTests: omnitest(correctExpr='cran <- tibble(mydf)')
+  Hint: Type cran <- tibble(mydf) to create a new mydf called cran.
 
 - Class: cmd_question
   Output: To avoid confusion and keep things running smoothly, let's remove the original data frame from your workspace with rm("mydf").
@@ -61,10 +61,10 @@
   Hint: Use rm("mydf") to remove the original data frame from your workspace.
 
 - Class: cmd_question
-  Output: From ?tbl_df, "The main advantage to using a tbl_df over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tbl_df to the console.
+  Output: From ?tibble, "The main advantage to using a tibble over a regular data frame is the printing." Let's see what is meant by this. Type cran to print our tibble to the console.
   CorrectAnswer: cran
   AnswerTests: omnitest(correctExpr='cran')
-  Hint: Type cran to print our tbl_df to the console.
+  Hint: Type cran to print our tibble to the console.
 
 - Class: text
   Output: This output is much more informative and compact than what we would get if we printed the original data frame (mydf) to the console.
@@ -91,7 +91,7 @@
   Hint: Type select(cran, ip_id, package, country) to select only the ip_id, package, and country variables from the cran dataset.
 
 - Class: text
-  Output: The first thing to notice is that we don't have to type cran$ip_id, cran$package, and cran$country, as we normally would when referring to columns of a data frame. The select() function knows we are referring to columns of the cran dataset.
+  Output: The first thing to notice is that we don't have to type cran$ip_id, cran$package, and cran$country, as we normally would when referring to columns of a tibble. The select() function knows we are referring to columns of the cran dataset.
 
 - Class: text
   Output: Also, note that the columns are returned to us in the order we specified, even though ip_id is the rightmost column in the original dataset.
@@ -292,18 +292,12 @@
   Hint: summarize(cran, avg_bytes = mean(size)) will give us the mean size and label the result 'avg_bytes'.
 
 - Class: text
-  Output: That's not particularly interesting. summarize() is most useful when working with data that has been grouped by the values of a particular variable.
+  Output: That's not particularly interesting. summarize() is most useful when working with data that has been grouped by the values of a particular variable. 
 
 - Class: text
-  Output: We'll look at grouped data in the next lesson, but the idea is that summarize() can give you the requested value FOR EACH group in your dataset.
+  Output: We will not look at grouped data in this lesson, but the idea is that summarize() can give you the requested value FOR EACH group in your dataset.
 
 - Class: text
-  Output: In this lesson, you learned how to manipulate data using dplyr's five main functions. In the next lesson, we'll look at how to take advantage of some other useful features of dplyr to make your life as a data analyst much easier.
+  Output: In this lesson, you learned how to manipulate data using dplyr's five main functions. In the "Grouping and Chaining with dplyr" lesson, we'll look at how to take advantage of some other useful features of dplyr to make your data-wrangling life much easier.
 
-- Class: mult_question
-  Output: "Would you like to receive credit for completing this course on
-    Coursera.org?"
-  CorrectAnswer: NULL
-  AnswerChoices: Yes;No
-  AnswerTests: coursera_on_demand()
-  Hint: ""
+
